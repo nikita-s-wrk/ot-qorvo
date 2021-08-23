@@ -29,4 +29,15 @@
 
 set -euxo pipefail
 
+echo 'Installing toolchain dependencies...'
+
+PLATFORM=$(lsb_release -is)
+ARCH=$(arch)
+
+if [ "$PLATFORM" = "Raspbian" ]; then
+    sudo apt-get --no-install-recommends install -y lib32z1 build-essential ninja-build
+elif [ "$PLATFORM" = "Ubuntu" ]; then
+    sudo apt-get --no-install-recommends install -y lib32z1 ninja-build gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+fi
+
 "$(dirname "$0")"/../openthread/script/bootstrap
