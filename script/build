@@ -56,7 +56,7 @@ build()
     cmake -GNinja -DOT_COMPILE_WARNING_AS_ERROR=ON "$@" "${OT_SRCDIR}"
 
     if [[ -n ${OT_CMAKE_NINJA_TARGET[*]} ]]; then
-        ninja "${OT_CMAKE_NINJA_TARGET[@]}"
+        ninja -v "${OT_CMAKE_NINJA_TARGET[@]}"
     else
         ninja
     fi

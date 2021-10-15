@@ -52,7 +52,13 @@
 void otPlatSettingsInit(otInstance *aInstance)
 {
     OT_UNUSED_VARIABLE(aInstance);
-    qorvoSettingsInit();
+
+#if (QORVO_MINIMAL)
+    qorvoSettingsInitMinimal();
+#else
+    qorvoSettingsInit(OPENTHREAD_CONFIG_MLE_MAX_CHILDREN);
+#endif
+
 }
 
 void otPlatSettingsDeinit(otInstance *aInstance)

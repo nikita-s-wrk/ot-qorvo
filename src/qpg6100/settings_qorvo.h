@@ -42,7 +42,9 @@
 extern "C" {
 #endif
 
-void qorvoSettingsInit(void);
+void qorvoSettingsInit(uint16_t childCount);
+
+void qorvoSettingsInitMinimal(void);
 
 otError qorvoSettingsGet(uint16_t aKey, int aIndex, uint8_t *aValue, uint16_t *aValueLength);
 
